@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EKO AI FARMA 7.0 — Glavna Stanica</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+
+<body class="pozadina">
+<header>
+  <h1>🌾 EKO AI FARMA 7.0</h1>
+  <p>Digitalni agronom — AI nadzor, dron analiza i glasovni asistent</p>
+</header>
+
+<nav>
+  <a href="index.html">🏡 Početna</a>
+  <a href="mapa.html">🗺 Mapa</a>
+</nav>
+
+<main>
+  <section class="grid-sekcija">
+    <div>
+      <h2>🛰 Vizuelna analiza drona</h2>
+      <video id="kameraDron" autoplay muted loop width="100%" style="border-radius:10px;box-shadow:0 0 15px #0f0;">
+        <source src="https://cdn.pixabay.com/video/2023/02/12/151492-799234191_large.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div id="dron3d"></div>
+  </section>
+
+  <section>
+    <h2>📊 AI senzori i prognoza</h2>
+    <div id="vrijeme">Učitavanje meteo podataka...</div>
+    <canvas id="graf"></canvas>
+    <canvas id="prognozaGraf"></canvas>
+    <button onclick="pokreni()">▶ Start</button>
+    <button onclick="pauziraj()">⏸ Pauza</button>
+    <button onclick="spremiPDF()">📄 PDF Izvještaj</button>
+  </section>
+
+  <section id="chatAI">
+    <h2>🧠 Glasovni asistent — Elvir AI</h2>
+    <div id="chatOkvir" style="background:#101b10;padding:15px;border-radius:10px;height:180px;overflow-y:auto;border:1px solid #d4af37;"></div>
+    <input id="unosChat" placeholder="Postavi pitanje (npr. kakva je vlaga?)" onkeypress="if(event.key==='Enter')posaljiPoruku()">
+    <button onclick="zapocniSlusanje()">🎙 Govori</button>
+  </section>
+</main>
+
+<footer>
+  © 2025 — <b>AI Asistent: Elvir Čajić</b> | Eko AI Laboratorija Poljoprivrede
+</footer>
+
+<script>
+// --- GLOBALNE VARIJABLE ---
+let aktivno=false, interval, chart, progChart;
+let dataTemp=[], dataVlaga=[], timestamps=[];
+const synth=window.speechSynthesis;
+
+// --- Učitavanje trenutnog vremena ---
+async function ucitajVrijeme(){
+  try{
+    const res=await fetch("https://api.open-meteo.com/v1/forecast?latitude=44.53&longitude=18.67&current_weather=true");
+    const p=await res.json();
+    const temp=p.current_weather.temperature;
+    document.getElementById("vrijeme").innerHTML=`🌤 Trenutna temperatura: ${temp}°C | Lokacija: Lukavac`;
+  }catch{
+    document.getElementById("vrijeme").textContent="⚠ Greška pri učitavanju vremenskih podataka.";
+  }
+}
+ucitajVrijeme();
+
+// --- Simulacija podataka ---
+function pokreni(){
+  if(aktivno)return;
+  aktivno=true;
+  interval=setInterval(()=>{
+    const t=(Math.random()*8+16).toFixed(1);
+    const v=(Math.random()*35+40).toFixed(1);
+    timestamps.push(new Date().toLocaleTimeString("bs-BA"));
+    if(timestamps.length>15){timestamps.shift();dataTemp.shift();dataVlaga.shift();}
+    dataTemp.push(t);dataVlaga.push(v);
+    azurirajGraf();azurirajPrognozu();
+  },2000);
+}
+function pauziraj(){aktivno=false;clearInterval(interval);}
+
+// --- Grafovi ---
+function azurirajGraf(){
+  const ctx=document.getElementById("graf").getContext("2d");
+  if(chart)chart.destroy();
+  chart=new Chart(ctx,{
+    type:"line",
+    data:{labels:timestamps,
+    datasets:[
+      {label:"🌡 Temperatura (°C)",data:dataTemp,borderColor:"#ffd700",fill:false},
+      {label:"💧 Vlažnost (%)",data:dataVlaga,borderColor:"#1aff1a",fill:false}
+    ]}});
+}
+function azurirajPrognozu(){
+  const ctx=document.getElementById("prognozaGraf").getContext("2d");
+  if(progChart)progChart.destroy();
+  const avg=dataVlaga.reduce((a,b)=>+a+ +b,0)/dataVlaga.length||0;
+  const prog=Math.min(100,avg+Math.random()*5);
+  progChart=new Chart(ctx,{
+    type:"bar",
+    data:{labels:["Predviđeni prinos (%)"],datasets:[{data:[prog],backgroundColor:"#c9a227"}]}});
+}
+
+// --- Glasovni AI ---
+let prepoznaj;
+if("webkitSpeechRecognition" in window){
+  prepoznaj=new webkitSpeechRecognition();
+  prepoznaj.lang="bs-BA";
+  prepoznaj.continuous=false;
+  prepoznaj.interimResults=false;
+  prepoznaj.onresult=(e)=>{
+    const tekst=e.results[0][0].transcript;
+    dodajPoruku("🎙 Ti: "+tekst);
+    odgovoriAI(tekst);
+  };
+}
+
+function zapocniSlusanje(){
+  if(!prepoznaj){alert("Tvoj pretraživač ne podržava glasovni unos.");return;}
+  prepoznaj.start();
+  dodajPoruku("🧠 Elvir AI: Slušam pažljivo...");
+}
+
+function posaljiPoruku(){
+  const unos=document.getElementById("unosChat");
+  const tekst=unos.value.trim();
+  if(!tekst)return;
+  dodajPoruku("👨‍🌾 Ti: "+tekst);
+  unos.value="";
+  odgovoriAI(tekst);
+}
+
+function dodajPoruku(txt){
+  const chat=document.getElementById("chatOkvir");
+  const p=document.createElement("p");
+  p.textContent=txt;
+  chat.appendChild(p);
+  chat.scrollTop=chat.scrollHeight;
+}
+
+// --- AI odgovori i “baza poruka” ---
+const porukeBaza=[
+  "Vlaga je stabilna, rast biljaka u optimalnom intervalu.",
+  "Temperatura u plasteniku je u granicama normale.",
+  "AI predviđa porast prinosa za 13.2%.",
+  "Dron je aktivan i snima sektor A2.",
+  "Uočena povećana bakterijska aktivnost – provjeriti tlo.",
+  "CO₂ vrijednosti su blago povišene, preporučujem ventilaciju.",
+  "Sistem je u potpunosti operativan i stabilan.",
+  "Zdravo, ovdje Elvir AI — tvoj digitalni agronom."
+];
+
+function odgovoriAI(tekst){
+  let odgovor="";
+  const unos=tekst.toLowerCase();
+  if(unos.includes("temperatura")) odgovor=porukeBaza[1];
+  else if(unos.includes("vlaga")) odgovor=porukeBaza[0];
+  else if(unos.includes("bakterije")) odgovor=porukeBaza[4];
+  else if(unos.includes("co2")) odgovor=porukeBaza[5];
+  else if(unos.includes("sistem")) odgovor=porukeBaza[6];
+  else if(unos.includes("dron")) odgovor=porukeBaza[3];
+  else odgovor=porukeBaza[Math.floor(Math.random()*porukeBaza.length)];
+  dodajPoruku("🧠 Elvir AI: "+odgovor);
+  govoriAI(odgovor);
+}
+
+// --- Glasovno izgovaranje ---
+function govoriAI(tekst){
+  const glas=new SpeechSynthesisUtterance(tekst+" — potpisuje Elvir AI asistent.");
+  glas.lang="bs-BA";
+  glas.pitch=0.9;
+  glas.rate=0.92;
+  glas.volume=1;
+  speechSynthesis.speak(glas);
+}
+
+// --- PDF Izvještaj ---
+function spremiPDF(){
+  const {jsPDF}=window.jspdf;
+  const doc=new jsPDF();
+  doc.text("EKO AI Izvještaj — Digitalni Agronom",10,15);
+  doc.text("Autor: AI Asistent Elvir Čajić",10,25);
+  dataTemp.forEach((t,i)=>{
+    doc.text(`${timestamps[i]} — Temp: ${t}°C, Vlaga: ${dataVlaga[i]}%`,10,40+i*7);
+  });
+  doc.save("EkoAI_izvjestaj.pdf");
+}
+
+// --- Automatski AI izvještaji svakih 15 sekundi ---
+setInterval(()=>{
+  const poruka=porukeBaza[Math.floor(Math.random()*porukeBaza.length)];
+  dodajPoruku("🧠 Elvir AI (auto-izvještaj): "+poruka);
+  govoriAI(poruka);
+},15000);
+</script>
+
+</body>
+</html>

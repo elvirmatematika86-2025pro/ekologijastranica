@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eko AI — Pametna Poljoprivreda</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="pozadina">
+
+<header>
+  <h1>🌿 EKO AI FARMA 4.0</h1>
+  <p>Digitalna transformacija ekološke poljoprivrede uz dronove, AI i održive fondove</p>
+</header>
+
+<nav>
+  <a href="galerija.html">📊 Nadzorna stanica</a>
+  <a href="mapa.html">🗺 Interaktivna mapa</a>
+</nav>
+
+<main>
+  <section>
+    <h2>O projektu</h2>
+    <p>
+      Ovaj sistem povezuje AI analitiku, dron tehnologiju i meteorološke senzore kako bi omogućio
+      <b>pametno, prediktivno i održivo</b> upravljanje usjevima.
+    </p>
+    <p>
+      Podaci se analiziraju u realnom vremenu, generišu se grafovi, AI predviđa prinose i daje glasovne savjete poljoprivrednicima.
+    </p>
+  </section>
+
+  <section>
+    <h2>Pokreni sistem</h2>
+    <p>Otvori nadzornu stanicu i aktiviraj AI analitiku s realnim podacima i 3D dronom.</p>
+    <a href="galerija.html" class="dugme">🚀 Pokreni Eko AI sistem</a>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 | Projekt: <b>prof. Elvir Čajić</b> & <b>Sead Nočajvić</b>
+</footer>
+
+</body>
+</html>

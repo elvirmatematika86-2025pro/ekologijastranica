@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🗺 AI GeoHub — Mapa Nadzora</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+<style>
+#aiLog {
+  background: rgba(0,0,0,0.35);
+  color: #ffd966;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+  font-family: "Consolas", monospace;
+  height: 160px;
+  overflow-y: auto;
+  box-shadow: inset 0 0 10px rgba(255,217,102,0.2);
+}
+#aiLog p {
+  margin: 5px 0;
+}
+#aiLog span {
+  color: #fff;
+}
+</style>
+</head>
+<body class="pozadina">
+
+<header>
+  <h1>🛰 AI Mapa Letova Drona</h1>
+  <p>Vizuelna i glasovna analiza ekološkog nadzora farme</p>
+</header>
+
+<nav>
+  <a href="index.html">🏠 Početna</a>
+  <a href="galerija.html">📊 Nadzorna stanica</a>
+  <a href="mapa.html" class="aktivno">🗺 Mapa</a>
+</nav>
+
+<main>
+  <section>
+    <div id="mapa" style="height:520px; border-radius:12px; box-shadow:0 0 25px rgba(255,217,102,0.2);"></div>
+    <div id="statusMape" style="text-align:center; margin-top:10px; font-size:1.1em; color:#ffd966;">
+      Učitavanje podataka...
+    </div>
+
+    <div id="panel" style="margin-top:15px; text-align:center; background:rgba(255,255,255,0.07); border-radius:10px; padding:10px;">
+      <p>📡 <b>Status drona:</b> <span id="statusDrona">Neaktivan</span></p>
+      <p>🌡 Temperatura: <span id="tempPolja">--</span>°C | 💨 CO₂: <span id="co2Polja">--</span> ppm | 🦠 Bakterije: <span id="bact">--</span></p>
+      <video id="miniCam" autoplay muted loop width="200" style="border-radius:8px; margin-top:10px;">
+        <source src="https://cdn.pixabay.com/video/2022/08/14/128536-745074472_large.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div id="aiLog"><b>🧠 AI Asistent:</b> <span>Sistem se pokreće...</span></div>
+  </section>
+</main>
+
+<footer>
+  © 2025 | Eko AI GeoHub | Autori: <b>Elvir Čajić</b> & <b>Sead Nočajvić</b>
+</footer>
+
+<script>
+// ======== INICIJALIZACIJA MAPE ========
+const mapa = L.map('mapa').setView([44.53, 18.67], 14);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap'
+}).addTo(mapa);
+
+const dronIkona = L.icon({
+  iconUrl: 'https://cdn-icons-png.flaticon.com/512/326/326545.png',
+  iconSize: [40, 40],
+  iconAnchor: [20, 20]
+});
+let marker = L.marker([44.53, 18.67], { icon: dronIkona }).addTo(mapa);
+let trag = [];
+let polyline = L.polyline(trag, { color: 'red', weight: 3 }).addTo(mapa);
+let zona = L.circle([44.53, 18.67], { color: "#00ff88", fillColor: "#00ff88", fillOpacity: 0.2, radius: 200 }).addTo(mapa);
+
+// ======== AI KONZOLA ========
+function dodajAILog(poruka) {
+  const log = document.getElementById("aiLog");
+  const p = document.createElement("p");
+  p.innerHTML = poruka;
+  log.appendChild(p);
+  log.scrollTop = log.scrollHeight;
+}
+
+// ======== GLASOVNI SISTEM ========
+function govoriAI(tekst) {
+  dodajAILog(`<span>${tekst}</span>`);
+  const glas = new SpeechSynthesisUtterance(tekst + " Potpisuje Elvir AI GeoHub nadzor.");
+  glas.lang = "bs-BA";
+  glas.pitch = 0.9;
+  glas.rate = 0.95;
+  glas.volume = 1;
+  speechSynthesis.speak(glas);
+}
+
+// ======== GLAVNA PETLJA ========
+function azurirajPoziciju() {
+  const x = 44.53 + (Math.random() - 0.5) / 300;
+  const y = 18.67 + (Math.random() - 0.5) / 300;
+  const vrijeme = Date.now();
+
+  marker.setLatLng([x, y]);
+  trag.push([x, y]);
+  polyline.setLatLngs(trag);
+  zona.setLatLng([x, y]);
+  mapa.panTo([x, y]);
+
+  const temp = (16 + Math.random() * 10).toFixed(1);
+  const co2 = (380 + Math.random() * 100).toFixed(0);
+  const bact = ["Niska", "Normalna", "Povišena", "Kritična"][Math.floor(Math.random() * 4)];
+
+  document.getElementById("tempPolja").textContent = temp;
+  document.getElementById("co2Polja").textContent = co2;
+  document.getElementById("bact").textContent = bact;
+  document.getElementById("statusMape").textContent =
+    `📡 Koordinate: ${x.toFixed(4)}, ${y.toFixed(4)} | ${new Date(vrijeme).toLocaleTimeString()}`;
+  document.getElementById("statusDrona").textContent = "Dron u letu i aktivno skenira sektor B3";
+
+  // vizuelna promjena zone
+  if (bact === "Kritična") zona.setStyle({ color: "#ff0000", fillColor: "#ff0000" });
+  else if (bact === "Povišena") zona.setStyle({ color: "#ffff00", fillColor: "#ffff00" });
+  else zona.setStyle({ color: "#00ff88", fillColor: "#00ff88" });
+
+  // generacija poruka
+  const poruke = [
+    `Skeniram tlo, temperatura iznosi ${temp}°C.`,
+    `Koncentracija CO₂ je ${co2} ppm, sve u redu.`,
+    `Aktivnost bakterija: ${bact}.`,
+    bact === "Kritična" ? "Upozorenje! Otkrivene anomalije u zemljištu!" : "Analiza završena, sektor stabilan."
+  ];
+  govoriAI(poruke[Math.floor(Math.random() * poruke.length)]);
+}
+
+// ======== ZONA PULSIRANJA ========
+setInterval(() => {
+  const r = zona.getRadius();
+  zona.setRadius(r === 200 ? 220 : 200);
+}, 1000);
+
+setInterval(azurirajPoziciju, 6000);
+azurirajPoziciju();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, 1.8, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.setSize(400, 300);
+document.getElementById("dron3d").appendChild(renderer.domElement);
+
+// Zemlja
+const ground = new THREE.Mesh(
+  new THREE.PlaneGeometry(5,5),
+  new THREE.MeshBasicMaterial({ color: 0x2b5d2b })
+);
+ground.rotation.x = -Math.PI/2;
+scene.add(ground);
+
+// Dron (kutija + elise)
+const dron = new THREE.Mesh(
+  new THREE.BoxGeometry(0.5,0.2,0.5),
+  new THREE.MeshStandardMaterial({ color: 0xc9a227 })
+);
+scene.add(dron);
+
+const light = new THREE.PointLight(0xffffff,1);
+light.position.set(2,3,2);
+scene.add(light);
+
+camera.position.z = 3;
+camera.position.y = 2;
+
+let t = 0;
+function anim(){
+  requestAnimationFrame(anim);
+  dron.position.y = Math.sin(t)*0.3 + 1;
+  dron.rotation.y += 0.02;
+  t += 0.05;
+  renderer.render(scene,camera);
+}
+anim();

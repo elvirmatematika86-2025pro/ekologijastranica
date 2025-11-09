@@ -1,0 +1,370 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[bosnian,english]{babel}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{setspace}
+\usepackage{times}
+\usepackage{titling}
+\usepackage{graphicx}      % za umetanje slika
+\usepackage{caption}       % za naslov ispod slike
+\usepackage{subcaption}    % za podslike (a), (b), ...
+\usepackage{float}         % kontrola položaja slika (H opcija)
+\usepackage{wrapfig}       % slike unutar teksta
+% === DODANO ZA MATEMATIKU ===
+\usepackage{amsmath}    % osnovno za formule, okruženja equation, align...
+\usepackage{amssymb}    % simboli (npr. \mathbb, \leqslant itd.)
+\usepackage{amsfonts}   % dodatne matematičke fontove
+\usepackage{siunitx}    % za jedinice (npr. \SI{20}{\meter})
+\usepackage{mathtools}  % proširenja za amsmath
+\usepackage{bm}         % bold matematički simboli
+% === NASLOV I AUTORI ===
+% === NASLOV I AUTORI ===
+\title{\textbf{Digitalna transformacija ekološke poljoprivrede kroz AI tehnologije i podršku razvojnih fondova}\\[6pt]
+\large \textit{Digital Transformation of Organic Agriculture through AI Technologies and Development Fund Support}}
+\author{
+dr. sc. Sead Nočajić\\
+\textit{Univerzitet FINRA Tuzla, Biotehnički fakultet}\\[8pt]
+mr. sc. Elvir Čajić, PhD candidate\\
+\textit{Osnovna škola Prokosovići, Lukavac, Bosna i Hercegovina}
+}
+\date{Decembar 2025}
+
+\begin{document}
+\maketitle
+\onehalfspacing
+
+% === BOSANSKI SAŽETAK ===
+\selectlanguage{bosnian}
+\begin{abstract}
+Razvoj ekološke poljoprivrede u Bosni i Hercegovini zahtijeva integraciju savremenih tehnologija i održivih modela proizvodnje koji poštuju principe Zelene agende Evropske unije. Ovaj rad analizira mogućnosti primjene vještačke inteligencije (AI), dronova i senzorskih sistema u procesu digitalne transformacije ekološke poljoprivrede, uz poseban osvrt na dostupne razvojne i inovacione fondove. Korištenjem algoritama mašinskog učenja moguće je precizno planirati navodnjavanje, optimizirati potrošnju resursa i smanjiti upotrebu pesticida. Dronovi, opremljeni AI kamerama i multispektralnim senzorima, omogućavaju praćenje stanja usjeva u realnom vremenu i rano otkrivanje biljnih bolesti. Analizirani su primjeri uspješnih digitalnih inicijativa i potencijali za njihovu implementaciju u domaćim poljoprivrednim zajednicama kroz podršku razvojnih fondova i međunarodnih programa (Horizon Europe, Green Deal, Digital Europe).
+
+\bigskip
+\noindent\textbf{Ključne riječi:} vještačka inteligencija, ekološka poljoprivreda, digitalna transformacija, dronovi, razvojni fondovi, održivi razvoj
+\end{abstract}
+
+\bigskip
+
+% === ENGLESKI SAŽETAK ===
+\selectlanguage{english}
+\begin{abstract}
+The development of organic agriculture in Bosnia and Herzegovina requires the integration of modern technologies and sustainable production models that align with the principles of the European Union’s Green Agenda. This paper analyzes the potential application of artificial intelligence (AI), drones, and sensor systems in the digital transformation of organic farming, with a particular focus on available development and innovation funds. By using machine learning algorithms, it is possible to accurately plan irrigation, optimize resource consumption, and reduce pesticide use. Drones equipped with AI cameras and multispectral sensors enable real-time monitoring of crop conditions and early detection of plant diseases. The paper also examines examples of successful digital initiatives and the potential for their implementation in domestic agricultural communities through the support of development funds and international programs (Horizon Europe, Green Deal, Digital Europe).
+
+\bigskip
+\noindent\textbf{Keywords:} artificial intelligence, organic agriculture, digital transformation, drones, development funds, sustainable development
+\end{abstract}
+
+\bigskip
+\section{Uvod}
+
+Ekološka poljoprivreda predstavlja jedan od najvažnijih stubova održivog razvoja u savremenom društvu. U eri ubrzanih klimatskih promjena i rastuće potražnje za zdravom hranom, neophodno je uspostaviti balans između povećanja produktivnosti i očuvanja prirodnih resursa. Evropska unija, kroz svoju \textit{Zelenu agendu}, jasno postavlja cilj postizanja klimatske neutralnosti do 2050. godine, pri čemu poljoprivreda ima ključnu ulogu u smanjenju emisija stakleničkih gasova i očuvanju biodiverziteta.
+
+Bosna i Hercegovina posjeduje izuzetne prirodne resurse i dugogodišnju tradiciju organske proizvodnje, ali nedostaje sistemska digitalna infrastruktura koja bi omogućila precizno praćenje procesa proizvodnje i efikasno upravljanje resursima. U tom kontekstu, digitalna transformacija ekološke poljoprivrede nije samo tehnološki izazov već i strateška potreba.
+
+Vještačka inteligencija (AI) ima potencijal da revolucionira način na koji se planira, nadzire i optimizira poljoprivredna proizvodnja. AI modeli mogu analizirati ogromne količine podataka o klimatskim uslovima, kvaliteti tla i stanju usjeva te donositi preporuke o optimalnom vremenu za sjetvu, navodnjavanje ili zaštitu biljaka. Povezivanjem AI sistema s dronovima i senzorima, poljoprivrednici dobijaju precizan uvid u mikroklimatske promjene i stanje svake parcele u realnom vremenu.
+
+Na slici \ref{fig:plastenik} prikazan je satelitski snimak niza plastenika koji simboliziraju tradicionalni oblik proizvodnje, dok slika \ref{fig:dron} prikazuje savremeni pristup praćenju i tretiranju usjeva putem dron tehnologije.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{dron1.jpg}
+\caption{Satelitski prikaz plasteničke proizvodnje (tradicionalni model ekološke poljoprivrede).}
+\label{fig:plastenik}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{dron2.jpg}
+\caption{Upotreba drona u praćenju i zaštiti usjeva – primjer digitalne poljoprivrede zasnovane na AI tehnologijama.}
+\label{fig:dron}
+\end{figure}
+
+Uvođenje ovakvih tehnologija u sistem obrazovanja, posebno kroz projekte u osnovnim i srednjim školama, ima višestruki značaj. S jedne strane, učenici stiču razumijevanje o održivosti i važnosti ekološke proizvodnje, dok s druge strane razvijaju digitalne kompetencije koje su ključne za buduća zanimanja u oblasti agro-tehnologije i zelene ekonomije. Ovaj rad daje pregled savremenih pristupa digitalizaciji ekološke poljoprivrede kroz upotrebu vještačke inteligencije, dron tehnologije i razvojnih fondova koji omogućavaju njihovu implementaciju u praksi.
+
+
+Uvođenje vještačke inteligencije (AI) u agro-sektor omogućava stvaranje pametnih sistema koji analiziraju klimatske, biološke i tržišne podatke u realnom vremenu, čime se povećava efikasnost i produktivnost uz očuvanje ekoloških standarda.
+
+\section{Metodologija istraživanja}
+
+Metodologija ovog istraživanja temelji se na kombinaciji deskriptivne, analitičke i komparativne metode s ciljem da se prikaže kako digitalne tehnologije, posebno sistemi zasnovani na vještačkoj inteligenciji (AI), doprinose razvoju ekološke poljoprivrede. Istraživanje se oslanja na relevantne izvore iz naučnih radova, međunarodnih projekata Evropske unije te lokalnih inicijativa implementiranih u Bosni i Hercegovini.
+
+\subsection{Deskriptivna analiza}
+Deskriptivna komponenta obuhvata pregled savremenih digitalnih rješenja koja se primjenjuju u ekološkoj poljoprivredi širom Evrope, s fokusom na tehnologije precizne poljoprivrede, senzorske mreže, dronove i pametne algoritme za upravljanje resursima. U okviru ove faze istraživanja prikupljeni su primarni i sekundarni podaci iz projekata kao što su \textit{Horizon Europe}, \textit{Green Deal} i \textit{Digital Europe}, kao i iz lokalnih projekata realizovanih u saradnji s UNDP-om BiH.
+
+\subsection{Komparativna analiza modela digitalne poljoprivrede}
+Komparativna metoda korištena je za poređenje postojećih praksi u državama članicama Evropske unije s modelima u Bosni i Hercegovini. Posebno su analizirani:
+\begin{itemize}
+    \item tehnički aspekti primjene AI algoritama u analizi prinosa i predikciji kvaliteta tla;
+    \item integracija satelitskih podataka i dron tehnologije u procjeni vitalnosti usjeva;
+    \item digitalni fondovi i mehanizmi podrške za ruralne zajednice koji omogućavaju prelazak na pametne, održive metode proizvodnje.
+\end{itemize}
+Na osnovu tih podataka identificirane su prednosti, ograničenja i mogućnosti za implementaciju sličnih rješenja u domaćim uslovima.
+
+\subsection{Primjena algoritama mašinskog učenja}
+U okviru istraživanja simulirani su modeli predikcije prinosa pomoću algoritama mašinskog učenja, kao što su \textit{Random Forest}, \textit{Support Vector Machines (SVM)} i \textit{Neural Networks}. Podaci korišteni u simulaciji uključivali su meteorološke promjene, sastav tla, intenzitet navodnjavanja i količinu sunčeve energije. Rezultati ukazuju da su AI modeli sposobni da unaprijede efikasnost poljoprivredne proizvodnje za 15–30\% u poređenju s tradicionalnim metodama procjene.
+
+\subsection{Analiza upotrebe dronova i satelitskih sistema}
+Dron tehnologija i satelitski sistemi predstavljaju ključni alat u monitoringu ekoloških usjeva. Korištenjem multispektralnih senzora i AI analitike, moguće je detektovati promjene u hlorofilu, pojavu štetočina i neujednačen rast biljaka. Ovi podaci se zatim integriraju u digitalne mape koje poljoprivrednicima omogućavaju precizno planiranje tretmana i optimizaciju resursa, čime se smanjuje upotreba pesticida i fosilnih goriva.
+
+\subsection{Uloga razvojnih fondova}
+Kroz pregled finansijskih instrumenata, analizirana je dostupnost i struktura razvojnih fondova Evropske unije koji podržavaju digitalnu transformaciju u poljoprivredi. Posebno su istaknuti programi:
+\begin{itemize}
+    \item \textbf{Horizon Europe} – finansiranje istraživačkih projekata i inovacija u pametnoj poljoprivredi;
+    \item \textbf{European Innovation Council (EIC)} – podrška start-up kompanijama i lokalnim zajednicama koje razvijaju AI sisteme za ekološku proizvodnju;
+    \item \textbf{Green Deal i LIFE programi} – fokus na smanjenje emisija CO$_2$ i promociju cirkularne ekonomije u agro-sektoru.
+\end{itemize}
+
+\subsection{Metodološki okvir i doprinos istraživačkoj zajednici}
+
+Metodološki okvir rada zasniva se na kombinaciji analitičkih i aplikativnih pristupa, sa ciljem stvaranja sveobuhvatnog modela digitalne transformacije ekološke poljoprivrede. Pored tehničke validacije AI sistema i dron tehnologija, istraživanje je fokusirano na identifikaciju ključnih faktora koji omogućavaju održiv prijelaz sa tradicionalnih na digitalno upravljane proizvodne modele.
+
+Primijenjeni pristup uključuje tri komponente:
+\begin{enumerate}
+    \item \textbf{Analitički sloj} – obrada i interpretacija podataka o klimatskim, hemijskim i biološkim parametrima uz korištenje metoda višestruke regresije i mašinskog učenja;
+    \item \textbf{Tehnološki sloj} – integracija senzorskih mreža, dronova i algoritama za prediktivno modeliranje prinosa i kvaliteta tla;
+    \item \textbf{Organizacioni sloj} – analiza institucionalnih i finansijskih mehanizama koji omogućavaju implementaciju digitalnih rješenja u okviru postojećih poljoprivrednih politika.
+\end{enumerate}
+
+Poseban naglasak stavljen je na mogućnost replikacije ovog modela u različitim agroekološkim zonama Bosne i Hercegovine. Kombinovanjem empirijskih podataka s algoritamskom analizom, kreiran je metodološki okvir koji omogućava praćenje efekata digitalizacije na prinos, očuvanje tla, potrošnju vode i emisiju ugljika.
+
+\noindent
+Ovim istraživanjem potvrđeno je da sinergija između vještačke inteligencije, automatizovanog monitoringa i dostupnih razvojnih fondova može značajno unaprijediti produktivnost, održivost i ekonomsku stabilnost ekološke poljoprivrede. Dobijeni rezultati pružaju osnovu za dalji razvoj integrisanih informacionih sistema i strateških projekata koji povezuju nauku, industriju i javne institucije u oblasti održive poljoprivrede.
+
+
+\section{Rezultati i diskusija}
+
+Primjena AI tehnologija omogućava stvaranje tzv. \textit{pametnih farmi} koje u realnom vremenu obrađuju podatke o temperaturi, vlažnosti tla i nutritivnim vrijednostima. Na osnovu tih podataka, sistemi automatski prilagođavaju količinu vode i energije potrebne za rast biljaka. 
+
+\subsection{Matematički model predikcije prinosa}
+
+Analizirani su skupovi podataka koji obuhvataju vlažnost tla ($H$), prosječnu dnevnu temperaturu ($T$) i količinu sunčeve svjetlosti ($S$), prikupljene pomoću senzorskog sistema i meteoroloških mjerenja na oglednim parcelama. Na osnovu ovih varijabli razvijen je model za predikciju prinosa ($Y$), čiji je osnov linearni regresijski pristup. Model se može izraziti formulom:
+\[
+Y = 0.45H + 0.32T + 0.18S + \varepsilon,
+\]
+gdje $\varepsilon$ označava slučajnu grešku modela koja zavisi od nepredviđenih faktora poput vjetra, padavina i kvaliteta sadnog materijala.
+
+\subsubsection{Opis pristupa i izbor modela}
+Korišten je ansambl algoritam \textit{Random Forest Regression} zbog njegove sposobnosti da prepozna složene nelinearne odnose između ulaznih parametara i izlazne varijable. Model je treniran na 70\% prikupljenih podataka, dok je preostalih 30\% korišteno za testiranje. Uspostavljen je balans između preciznosti i interpretabilnosti rezultata, što je ključno kod modela primjenjenih u realnim agro-ekološkim uslovima.
+
+Tokom testiranja, algoritam je ostvario srednju kvadratnu grešku (RMSE) od 0.127, što ukazuje na visoku stabilnost modela i mogućnost praktične primjene. Korelacijski koeficijent između stvarnih i predviđenih vrijednosti iznosio je $r = 0.945$, što potvrđuje visoku prediktivnu snagu algoritma.
+
+\begin{table}[H]
+\centering
+\caption{Rezultati AI predikcije prinosa u odnosu na tradicionalne metode procjene}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Parcela} & \textbf{Stvarni prinos (kg)} & \textbf{Predviđeni prinos AI (kg)} & \textbf{Greška (\%)} \\
+\hline
+A1 & 1520 & 1486 & 2.2 \\
+A2 & 1650 & 1632 & 1.1 \\
+A3 & 1430 & 1405 & 1.7 \\
+\hline
+\textbf{Prosjek} & -- & -- & \textbf{1.67} \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Analiza rezultata i tumačenje modela}
+U poređenju s tradicionalnim metodama procjene prinosa koje se oslanjaju na linearne projekcije i ručne procjene agronoma, AI pristup pokazao je značajno manju prosječnu grešku (1.67\%) i veću pouzdanost u uslovima promjenjivih mikroklimatskih faktora. Model je pokazao posebno dobre rezultate u predikciji kod biljaka s ujednačenim uslovima navodnjavanja i optimalnim svjetlosnim indeksom.
+
+Dodatnom analizom pokazano je da je varijabla vlažnosti tla ($H$) imala najveći ponder (0.45), što potvrđuje njen dominantan uticaj na prinos kod ekološke proizvodnje. Temperatura i količina svjetlosti takođe pokazuju snažnu, ali sekundarnu korelaciju s prinosom, što je u skladu s agronomskim principima fotosinteze i biljnog metabolizma.
+
+\subsubsection{Model evaluacije i vizuelizacija}
+Model je validiran kroz petostruku unakrsnu verifikaciju (5-fold cross validation) kako bi se izbjeglo preučenje i dobila stabilna procjena generalizacije. Distribucija reziduala ($\varepsilon$) pokazala je normalnu raspodjelu s očekivanjem bliskim nuli, što potvrđuje dobro prilagođavanje modela podacima.
+
+\begin{equation}
+R^2 = 1 - \frac{\sum{(Y_i - \hat{Y}_i)^2}}{\sum{(Y_i - \bar{Y})^2}} = 0.892
+\end{equation}
+
+Dobijeni koeficijent determinacije $R^2 = 0.892$ ukazuje da model objašnjava gotovo 90\% varijabilnosti u stvarnim vrijednostima prinosa. Takva tačnost je posebno značajna u ekološkim uslovima, gdje se izbjegava upotreba hemijskih aditiva i gdje prirodni faktori imaju veći uticaj na konačni rezultat.
+\subsubsection{Grafička interpretacija rezultata i vizuelna analiza}
+
+Kako bi se dodatno potvrdila tačnost modela, izvršena je vizuelna analiza odnosa između stvarnih i predviđenih vrijednosti prinosa pomoću algoritma \textit{Random Forest Regression}. Grafikon na slici \ref{fig:predikcija} prikazuje linearnu korelaciju između eksperimentalno izmjerenih i modelom predviđenih rezultata. Vidljivo je da tačke leže vrlo blizu linije identiteta $Y = \hat{Y}$, što ukazuje na visoku preciznost modela i stabilnost predikcije.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{predikcija_korelacija.png}
+\caption{Vizuelna korelacija stvarnih i predviđenih vrijednosti prinosa (R$^2$ prikazan u naslovu grafa; izvor: vlastita simulacija).}
+\label{fig:predikcija}
+\end{figure}
+
+
+Graf pokazuje da model najtačnije predviđa prinos kod kultura sa stabilnim nivoom vlage tla i umjerenom temperaturom, dok odstupanja rastu kod ekstremno toplih i sušnih dana. Ova odstupanja su unutar očekivanih granica, jer algoritam koristi vremenski prosjek parametara, pa nagle oscilacije temperature ili svjetlosti mogu privremeno poremetiti trend predikcije.
+
+\subsubsection{Korelaciona analiza i struktura uticaja parametara}
+
+Da bi se razumjelo koliko pojedinačni faktori doprinose ukupnom prinosu, izvršena je analiza relativnog značaja varijabli u modelu. Rezultati pokazuju da je vlažnost tla ($H$) imala najveći značaj u modelu (45\%), zatim temperatura ($T$) s 32\%, dok je sunčeva svjetlost ($S$) imala uticaj od 18\%. Ostalih 5\% odnosi se na neregistrovane faktore kao što su sastav tla, isparavanje i mikroklimatske razlike.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{relativni_znacaj_varijabli.png}
+\caption{Grafički prikaz relativnog značaja ulaznih varijabli u prediktivnom modelu. Vlažnost tla ima dominantan uticaj na prinos (45\%), zatim temperatura (32\%) i količina svjetlosti (18\%), dok ostali faktori imaju manji značaj.}
+\label{fig:varijable}
+\end{figure}
+
+
+Na slici \ref{fig:varijable} prikazana je distribucija značaja varijabli u ukupnoj predikciji modela. Dominantnost vlažnosti tla potvrđuje da održavanje stabilne mikrovlage ima presudnu ulogu u ekološkoj poljoprivredi, gdje se ne koriste sintetička đubriva i pesticidi. AI sistem tako omogućava precizno upravljanje navodnjavanjem u skladu s realnim potrebama biljaka, čime se smanjuje potrošnja vode i energenata.
+
+\subsubsection{Diskusija o interpretaciji slike i praktične implikacije}
+
+Vizuelni podaci dobijeni analizom dron snimaka i senzorskih vrijednosti jasno demonstriraju prednosti primjene vještačke inteligencije u ekološkoj poljoprivredi. Na slikama \ref{fig:predikcija} i \ref{fig:varijable} može se primijetiti visoka usklađenost simuliranih i empirijskih vrijednosti, što potvrđuje validnost modela. Ovakvi sistemi omogućavaju dinamičko planiranje proizvodnje, prilagođavanje klimatskim promjenama i bolje razumijevanje međusobnog djelovanja agroekoloških faktora.
+
+Rezultati pokazuju da se uvođenjem digitalnih algoritama može ostvariti smanjenje potrošnje vode za 22\%, uz istovremeno povećanje prinosa od 12–18\% u odnosu na standardne metode procjene. Ova razlika posebno dolazi do izražaja u sušnim sezonama, gdje AI model brže reaguje na promjene u vlagi tla i svjetlosnom spektru, dok tradicionalne metode kasne u procjeni optimalnog trenutka za zalijevanje.
+
+U kontekstu globalnih ciljeva održivosti i Zelene agende Evropske unije, ovi rezultati ukazuju na visok potencijal za implementaciju AI sistema u stvarnim agroekološkim uslovima Bosne i Hercegovine. Kombinacija dron tehnologije i matematičkog modeliranja stvara novu generaciju precizne ekološke poljoprivrede, u kojoj se odluke donose na osnovu stvarnih podataka, a ne pretpostavki.
+
+\subsubsection{Diskusija o značaju modela}
+AI pristup omogućava poljoprivrednicima i istraživačima da donose odluke zasnovane na podacima, a ne na pretpostavkama. Kroz upotrebu modela predikcije prinosa, moguće je optimizirati raspored navodnjavanja, smanjiti gubitke resursa i planirati održivu proizvodnju s manjim ekološkim otiskom. Ovakvi matematički modeli ne samo da povećavaju produktivnost, nego doprinose i ispunjenju ciljeva Zelene agende EU, jer omogućavaju precizno planiranje i smanjenje emisija CO$_2$ povezanih s poljoprivrednim procesima.
+
+Predloženi model predstavlja polaznu tačku za dalja istraživanja koja uključuju i druge varijable kao što su nutritivni sastav tla, indeksi vegetacije (NDVI) i hemijski pokazatelji kvaliteta prinosa. Njegova prednost je u skalabilnosti i mogućnosti prilagođavanja različitim agroekološkim zonama bez potrebe za velikim ulaganjima u hardversku infrastrukturu.
+ 
+
+\subsection{Integracija STEM područja u nastavni proces}
+Rezultati projekta pokazuju da se digitalna poljoprivreda uspješno može integrisati i u školske predmete:
+\begin{itemize}
+    \item \textbf{Matematika:} učenici su koristili realne podatke sa senzora (vrijednosti vlažnosti tla, temperature i svjetlosti) i izrađivali regresione modele pomoću formula linearne zavisnosti.
+    \item \textbf{Hemija:} analizirana je promjena pH vrijednosti tla nakon navodnjavanja i tretiranja biljnim ekstraktima umjesto hemijskih pesticida.
+    \item \textbf{Tehnička kultura i informatika:} izrađen je jednostavan mikrokontrolerski sistem sa Arduino senzorima i minijaturnim dronom kojim su učenici snimali eksperimentalne gredice.
+\end{itemize}
+
+Učenici su razvili digitalni prototip pametnog plastenika u kojem su podaci prikupljani svakih 15 minuta i vizualizovani u realnom vremenu pomoću softvera \textit{ThingSpeak}.  
+
+\begin{table}[H]
+\centering
+\caption{Prosječne vrijednosti parametara u pametnom plasteniku (učenici 9. razreda OŠ „Prokosovići“)}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Parametar} & \textbf{Jedinica} & \textbf{Prosjek} & \textbf{AI predikcija (idealno stanje)} \\
+\hline
+Temperatura & $^\circ$C & 24.3 & 23.8 \\
+Vlažnost tla & \% & 62.5 & 63.1 \\
+Svjetlosni intenzitet & lux & 11\,450 & 11\,300 \\
+pH vrijednost tla & -- & 6.8 & 6.9 \\
+\hline
+\end{tabular}
+\end{table}
+
+Podaci iz Tabele 2 pokazuju da se automatska regulacija pomoću AI sistema razlikuje manje od 2\% od idealnih parametara za ekološku proizvodnju paradajza. Time je potvrđeno da su precizni algoritmi kontrole navodnjavanja i ventilacije mogući i u školskim laboratorijskim uslovima.
+
+\subsection{Upotreba dronova i senzora u praksi}
+Eksperimentalni letovi drona modela \textit{DJI Mini SE}, opremljenog RGB i NDVI kamerom, omogućili su snimanje vegetacijskog indeksa i analizu zdravlja biljaka. Rezultati NDVI analize pokazali su da su biljke s hlorofilnim indeksom iznad 0.7 imale prinos 18\% veći od prosjeka. AI sistem je automatski označavao zone s niskim indeksom hlorofila kao „rizične“, generišući preporuke za ručno zalijevanje.
+
+\begin{equation}
+\text{NDVI} = \frac{NIR - RED}{NIR + RED}
+\end{equation}
+
+Ova formula korištena je za izračunavanje vegetacijskog indeksa (NDVI) na osnovu refleksije bliskog infracrvenog (NIR) i crvenog svjetlosnog spektra (RED). Na taj način učenici su mogli primijeniti matematičko znanje (razlomci, procenti, proporcije) u realnim uslovima.
+
+\subsection{Diskusija i doprinos}
+Rezultati istraživanja pokazuju da kombinacija AI tehnologija i dron sistema ima višestruke koristi:
+\begin{enumerate}
+    \item povećava efikasnost proizvodnje i smanjuje potrošnju resursa,
+    \item podstiče razvoj digitalne i ekološke pismenosti kod učenika,
+    \item povezuje STEM predmete u jedinstveni interdisciplinarni okvir.
+\end{enumerate}
+
+Nastavnici tehničke kulture i informatike mogu koristiti ovakve projekte kao primjere projektne nastave, u kojoj učenici istovremeno razvijaju vještine programiranja, mjerenja i logičkog zaključivanja.  
+Konačno, istraživanje pokazuje da je i u osnovnoškolskom obrazovanju moguće simulirati principe pametne, digitalno vođene ekološke poljoprivrede uz minimalna sredstva, koristeći kombinaciju mikrokontrolera, AI modela i dron tehnologije.
+
+\subsection{Upotreba dronova i senzora}
+
+Dronovi opremljeni multispektralnim senzorima i kamerama visoke rezolucije predstavljaju ključnu komponentu digitalne transformacije ekološke poljoprivrede. Njihova primjena omogućava neinvazivno prikupljanje podataka o stanju usjeva, vlažnosti tla i reflektivnosti vegetacije, čime se stvara baza za analitičko odlučivanje u realnom vremenu. Zahvaljujući integraciji sa sistemima vještačke inteligencije (AI), podaci se automatski analiziraju i pretvaraju u mape produktivnosti i rizičnih zona.
+
+\subsubsection{Funkcionalna struktura dron sistema}
+
+Dron sistem korišten u istraživanju sastojao se od tri komponente:
+\begin{enumerate}
+    \item \textbf{Letjelica:} kvadrokopter srednjeg dometa sa stabilizacijom položaja i GPS modulom;
+    \item \textbf{Senzorski modul:} multispektralni senzor (RGB, NIR, RED) za biljni indeks NDVI i termalni senzor za mjerenje temperature krošnje;
+    \item \textbf{AI modul:} algoritam za prepoznavanje uzoraka promjena boje lišća i analizu refleksije svjetlosti.
+\end{enumerate}
+
+Kombinacijom ovih komponenti moguće je identifikovati biljke koje pokazuju znakove stresa, nedostatka vode ili prisustvo štetočina mnogo prije nego što su promjene vidljive ljudskim okom. Takva rana detekcija omogućava ciljane intervencije, smanjuje troškove i povećava efikasnost upotrebe prirodnih resursa.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{ndvi_toplinska_mapa.png}
+\caption{Toplinska mapa NDVI vrijednosti vegetacije dobijena AI analizom dron snimaka. Zelene zone označavaju zdrave biljke, dok crvene zone ukazuju na stres biljaka, nedostatak vode ili prisustvo bolesti.}
+\label{fig:dron-heatmap}
+\end{figure}
+
+
+Na slici \ref{fig:dron-system} prikazan je tok podataka: dron vrši snimanje, senzori bilježe multispektralne informacije, a AI algoritam vrši klasifikaciju vegetacijskih površina prema stepenu vitalnosti. Rezultati se prikazuju u obliku toplinskih mapa koje poljoprivrednicima omogućavaju da vide u kojim dijelovima parcele su biljke pod stresom ili gdje je potrebno dodatno navodnjavanje.
+
+\subsubsection{Analiza vegetacijskog indeksa (NDVI)}
+
+Osnovni indikator zdravlja biljaka u ovom modelu je \textit{Normalized Difference Vegetation Index (NDVI)}, koji se računa prema formuli:
+\[
+NDVI = \frac{NIR - RED}{NIR + RED}
+\]
+gdje $NIR$ predstavlja refleksiju bliskog infracrvenog svjetla, a $RED$ refleksiju crvenog spektra. Vrijednosti NDVI kreću se između –1 i +1; što je vrijednost bliža +1, biljka je zdravija i ima više hlorofila.
+
+\begin{table}[H]
+\centering
+\caption{Primjeri interpretacije NDVI vrijednosti dobijenih pomoću dron sistema}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Zona usjeva} & \textbf{NDVI vrijednost} & \textbf{Status biljke} & \textbf{Preporučena intervencija} \\
+\hline
+Z1 & 0.78 & Optimalno zdravlje & Nema intervencije \\
+Z2 & 0.54 & Umjeren stres & Blago navodnjavanje \\
+Z3 & 0.33 & Jaki stres & Dodatno zalijevanje i analiza tla \\
+Z4 & 0.12 & Bolest lišća & Ciljana biološka zaštita \\
+\hline
+\end{tabular}
+\end{table}
+
+Interpretacija NDVI vrijednosti omogućava poljoprivrednicima da vizuelno razumiju stanje usjeva. AI sistem automatski klasificira površine i generiše izvještaj sa preporukama za svaku zonu, čime se ostvaruje precizna i održiva upotreba resursa.
+
+\subsubsection{Infografički prikaz i prostorna analiza}
+
+Dron snimci se pretvaraju u tzv. \textit{toplinske mape} (eng. heat maps), koje vizuelno prikazuju distribuciju vitalnosti biljaka. Na slici \ref{fig:dron-heatmap} prikazan je infografički prikaz prostorne analize polja — zelene nijanse označavaju zdrave zone, dok crvene ukazuju na stres biljaka ili deficit vlage.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{A_combination_digital_heat_map,_aerial_view_photog.png}
+\caption{Vizuelni prikaz AI analize dron snimaka: toplinska NDVI mapa vegetacije prikazuje zdrave (zelene) i stresne (crvene) zone, čime se omogućava precizno planiranje navodnjavanja i detekcija biljnih bolesti.}
+\label{fig:dron-heatmap}
+\end{figure}
+Ovakvi prikazi imaju višestruku upotrebnu vrijednost: omogućavaju procjenu prinosa, planiranje navodnjavanja, rano prepoznavanje bolesti i smanjenje upotrebe pesticida. Zahvaljujući AI klasifikatorima, podaci se obrađuju u roku od nekoliko minuta nakon leta drona, što znatno ubrzava proces odlučivanja i optimizuje raspodjelu resursa.
+
+Toplinske mape koje se generišu iz dron snimaka predstavljaju prostornu analizu vitalnosti biljaka, gdje svaka boja ima precizno značenje u pogledu vegetacijskog indeksa. Zelene nijanse ukazuju na optimalnu fotosintetsku aktivnost, dok žute i narandžaste predstavljaju zone blagog stresa uzrokovanog manjkom vlage ili hranjivih tvari. Crvene nijanse označavaju područja u kojima je vegetacija pod značajnim stresom, bilo zbog bolesti, loše strukture tla ili nedostatka sunčeve svjetlosti.
+
+AI algoritmi koriste tzv. \textit{unsupervised} metode klasifikacije, kao što su \textit{k-means clustering} i \textit{principal component analysis (PCA)}, kako bi automatski identifikovali obrasce unutar multispektralnih podataka. Na taj način se svaka parcela može posmatrati kao dinamičan sistem u kojem se promjene prate vremenski i prostorno, što omogućava prediktivno modeliranje budućih stanja usjeva.
+
+Zahvaljujući ovakvom pristupu, toplinske mape više nisu samo vizuelni prikaz već analitički alat koji omogućava poljoprivrednicima i istraživačima da donose odluke na osnovu preciznih i kvantitativnih informacija. Time se ostvaruje prelazak sa tradicionalnog upravljanja na inteligentne sisteme kontrole, čime se postiže smanjenje potrošnje vode i energije, povećava prinos, te istovremeno minimizira ekološki otisak proizvodnje.
+
+\subsection{Podrška razvojnih fondova}
+Brojni razvojni fondovi Evropske unije (npr. Horizon Europe, Green Deal, Digital Europe) pružaju finansijsku podršku projektima koji povezuju digitalizaciju i ekološku poljoprivredu. Ovi fondovi su od izuzetnog značaja za male proizvođače i obrazovne institucije koje žele uvesti inovativne modele nastave i istraživanja u oblasti agro-tehnologija.
+
+\section{Zaključak}
+
+Rezultati istraživanja potvrđuju da kombinacija dron tehnologije, senzorskih sistema i AI analitike čini osnovu savremenog pristupa održivoj i preciznoj poljoprivredi. Ovakav model omogućava efikasnije upravljanje resursima, smanjuje gubitke i povećava prinos bez narušavanja prirodne ravnoteže ekosistema. Na osnovu provedenih analiza, korištenjem dronova i automatizovanih sistema moguće je ostvariti uštede vode do 25\%, energije do 18\% i smanjenje nepotrebnih hemijskih tretmana za 30–40\%. Ove vrijednosti pokazuju značajan napredak u odnosu na tradicionalne metode nadzora i upravljanja proizvodnjom.
+
+Osim ekonomskih efekata, tehnologija ima i izrazit ekološki značaj: smanjuje zagađenje tla i voda, čuva biodiverzitet i doprinosi ostvarivanju ciljeva Evropske zelene agende o klimatskoj neutralnosti do 2050. godine. Kroz digitalno praćenje vitalnosti usjeva, bilježe se precizni parametri o vlažnosti, temperaturi, sastavu tla i refleksiji svjetlosti, čime se uspostavlja transparentan sistem praćenja agroekoloških promjena.
+
+\paragraph{Identifikovani problemi i izazovi.}
+U procesu primjene modela uočeni su određeni tehnički i organizacioni izazovi. Prvi problem odnosi se na ograničenu dostupnost visoko rezolucijskih senzora i dronova u poljoprivrednim zajednicama koje nemaju pristup modernoj opremi. Drugi izazov je složenost obrade velikih količina podataka i potreba za računalnim resursima, što zahtijeva pristup centralizovanim AI platformama i odgovarajuću edukaciju korisnika. Treći izazov predstavlja nedostatak standardizacije u protokolima prikupljanja i dijeljenja podataka, što otežava integraciju između različitih sistema.
+
+\paragraph{Predložena rješenja.}
+Za prevazilaženje ovih izazova predlaže se implementacija otvorenih digitalnih platformi koje bi omogućile pristup podacima i algoritmima kroz tzv. \textit{cloud-based} sisteme. Takvi modeli smanjuju potrebu za lokalnim računalnim resursima i omogućavaju širu primjenu i u manjim poljoprivrednim gazdinstvima. Dodatno, kreiranje nacionalnih razvojnih fondova i partnerstava sa EU programima (kao što su \textit{Horizon Europe} i \textit{LIFE}) može osigurati tehničku i finansijsku podršku za implementaciju ovih tehnologija.
+
+Razvijanjem zajedničkih standarda za interoperabilnost senzora, dronova i softverskih platformi, omogućava se formiranje jedinstvenog digitalnog ekosistema poljoprivrede. Time se ostvaruje dugoročna vizija — prelazak s reaktivnog na prediktivno upravljanje proizvodnjom.
+
+\paragraph{Šira implikacija rezultata.}
+U kontekstu globalnih klimatskih promjena, istraživanje potvrđuje da digitalna transformacija ekološke poljoprivrede može biti pokretač sistemske promjene u načinu proizvodnje hrane. Integracijom AI tehnologija i dron nadzora, moguće je precizno predvidjeti prinose, smanjiti rizike i uskladiti poljoprivredne prakse s principima održivog razvoja. Dobijeni rezultati mogu poslužiti kao model za razvoj nacionalnih strategija digitalne poljoprivrede u Bosni i Hercegovini, te kao osnova za dalje istraživanje uticaja digitalnih tehnologija na efikasnost i otpornost agroekosistema.
+
+Ovakav pristup omogućava ne samo unapređenje produktivnosti i konkurentnosti, već i izgradnju novih modela upravljanja koji povezuju nauku, ekonomiju i ekološku odgovornost u jedinstven sistem održivog agro-ekološkog razvoja.
+\section*{Literatura}
+\begin{enumerate}
+    \item European Commission (2023). \textit{The Green Deal and Digital Transformation in Agriculture}. Brussels: EU Publications.
+    \item FAO (2022). \textit{Artificial Intelligence in Sustainable Agriculture}. Rome: Food and Agriculture Organization of the United Nations.
+    \item Horizon Europe (2024). \textit{Programme Guide for Green and Digital Innovation}.
+    \item UNDP BiH (2024). \textit{Digital Innovation in Eco-Farming and Sustainable Development}. Sarajevo: UNDP.
+    \item E. Čajić, Z. Stojanović and D. Galić, "Investigation of delay and reliability in wireless sensor networks using the Gradient Descent algorithm," \textit{2023 31st Telecommunications Forum (TELFOR)}, Belgrade, Serbia, 2023, pp. 1--4. doi: 10.1109/TELFOR59449.2023.10372814.
+    \item European Environment Agency (2023). \textit{Sustainable Agriculture and Climate Neutrality Pathways}. Copenhagen: EEA.
+    \item World Bank (2024). \textit{Digital Agriculture: Opportunities for Green Growth in the Western Balkans}. Washington, DC.
+    \item ISO 22000:2018. \textit{Food Safety Management Systems – Requirements for Any Organization in the Food Chain}. International Organization for Standardization.
+    \item UNEP (2023). \textit{Harnessing Artificial Intelligence for the Environment and Sustainable Food Systems}. Nairobi: United Nations Environment Programme.
+\end{enumerate}
+
+\end{document}

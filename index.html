@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EKO AI FARMA 6.0 — Digitalni Agronom</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #0b2410, #103819, #1a4524);
+  color: #f3f3f3;
+  overflow-x: hidden;
+}
+header {
+  text-align: center;
+  padding: 40px 20px;
+  background: rgba(0,0,0,0.3);
+  border-bottom: 2px solid #d4af37;
+}
+header h1 {
+  color: #ffd700;
+  font-size: 2.5em;
+  margin: 0;
+}
+nav {
+  text-align: center;
+  padding: 15px;
+  background: rgba(0,0,0,0.4);
+}
+nav a {
+  text-decoration: none;
+  color: #f0f0f0;
+  margin: 0 15px;
+  font-weight: bold;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+nav a:hover {
+  background: #d4af37;
+  color: #000;
+}
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 30px;
+  line-height: 1.6;
+}
+section {
+  background: rgba(255,255,255,0.05);
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+}
+h2 {
+  color: #ffd966;
+  border-left: 5px solid #ffd700;
+  padding-left: 10px;
+}
+.digBtn {
+  display: inline-block;
+  margin: 15px 10px;
+  padding: 12px 20px;
+  background: linear-gradient(90deg, #c9a227, #ffd966);
+  color: #000;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.digBtn:hover {
+  transform: scale(1.05);
+  background: #ffe680;
+}
+footer {
+  text-align: center;
+  padding: 15px;
+  border-top: 1px solid #ffd966;
+  font-size: 14px;
+  color: #ccc;
+  margin-top: 30px;
+}
+
+/* Modul stabilnosti */
+#stabilnost {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+}
+.sensor {
+  background: rgba(0,0,0,0.4);
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid #ffd966;
+}
+.sensor h3 {
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+.sensor span {
+  font-size: 22px;
+  font-weight: bold;
+  color: #00ff88;
+}
+.sensor.alert span {
+  color: #ff4444;
+}
+
+/* Simulacija drona */
+#dronSim {
+  position: relative;
+  height: 200px;
+  margin-top: 20px;
+  background: linear-gradient(180deg, #173416 0%, #0b1f0a 100%);
+  border-radius: 10px;
+  overflow: hidden;
+}
+#dron {
+  position: absolute;
+  top: 80px;
+  left: 10px;
+  width: 70px;
+  transition: all 1s ease-in-out;
+  filter: drop-shadow(0 0 10px #00ffcc);
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🌾 EKO AI FARMA 6.0</h1>
+  <p>Digitalna transformacija ekološke poljoprivrede — AI, dronovi, senzori i održiva energija</p>
+</header>
+
+<nav>
+  <a href="galerija.html">📊 Nadzorna stanica</a>
+  <a href="mapa.html">🗺 Interaktivna mapa</a>
+  <a href="#">🔬 Laboratorija</a>
+</nav>
+
+<main>
+  <section>
+    <h2>O projektu</h2>
+    <p>
+      <b>EKO AI FARMA 6.0</b> koristi dronove, senzore i umjetnu inteligenciju za mjerenje vlažnosti, temperature,
+      sadržaja CO₂ i O₂, te mikrobiološke aktivnosti tla. Sistem prikazuje status u realnom vremenu i sam upozorava na
+      ekološke promjene.
+    </p>
+  </section>
+
+  <section>
+    <h2>Stabilnost sistema</h2>
+    <div id="stabilnost">
+      <div class="sensor"><h3>🌡 Temperatura</h3><span id="temp">-- °C</span></div>
+      <div class="sensor"><h3>💧 Vlažnost</h3><span id="vlaga">-- %</span></div>
+      <div class="sensor"><h3>☁️ CO₂</h3><span id="co2">-- ppm</span></div>
+      <div class="sensor"><h3>🌿 O₂</h3><span id="o2">-- %</span></div>
+      <div class="sensor"><h3>🦠 Bakterije</h3><span id="bakt">--</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Simulacija drona</h2>
+    <div id="dronSim">
+      <img id="dron" src="https://cdn-icons-png.flaticon.com/512/326/326545.png" alt="Dron">
+    </div>
+    <button class="digBtn" onclick="pokreniDron()">🛫 Poleti</button>
+    <button class="digBtn" onclick="sletiDron()">🛬 Sleti</button>
+  </section>
+
+  <section>
+    <h2>Pokreni sistem</h2>
+    <p>Otvori nadzornu stanicu, aktiviraj AI analitiku i pogledaj kartu drona.</p>
+    <a href="galerija.html" class="digBtn">🚀 Aktiviraj AI sistem</a>
+    <a href="mapa.html" class="digBtn">🗺 Pogledaj mapu drona</a>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 | Projekt: <b>prof. Elvir Čajić</b> & <b>Sead Nočajvić</b> | Eko AI Laboratorija
+</footer>
+
+<script>
+// Simulacija podataka
+function azurirajSenzore() {
+  const t = (20 + Math.random() * 10).toFixed(1);
+  const v = (40 + Math.random() * 30).toFixed(1);
+  const c = (400 + Math.random() * 50).toFixed(0);
+  const o = (19 + Math.random() * 2).toFixed(1);
+  const b = ["Normalna", "Aktivna", "Visoka", "U padu"][Math.floor(Math.random() * 4)];
+  document.getElementById("temp").textContent = t + " °C";
+  document.getElementById("vlaga").textContent = v + " %";
+  document.getElementById("co2").textContent = c + " ppm";
+  document.getElementById("o2").textContent = o + " %";
+  document.getElementById("bakt").textContent = b;
+
+  // Upozorenja
+  document.querySelectorAll(".sensor").forEach(el => el.classList.remove("alert"));
+  if (t > 30 || v < 45 || c > 450) {
+    let problem = "";
+    if (t > 30) problem = "Visoka temperatura!";
+    if (v < 45) problem = "Nedostatak vlage!";
+    if (c > 450) problem = "Povećan CO₂!";
+    govoriAI("Upozorenje: " + problem);
+    document.querySelectorAll(".sensor").forEach(el => el.classList.add("alert"));
+  }
+}
+setInterval(azurirajSenzore, 4000);
+
+// Dron animacija
+function pokreniDron() {
+  const dron = document.getElementById("dron");
+  dron.style.left = "80%";
+  dron.style.top = "40px";
+  govoriAI("Dron je poletio. Sistem aktivan.");
+}
+function sletiDron() {
+  const dron = document.getElementById("dron");
+  dron.style.left = "10px";
+  dron.style.top = "80px";
+  govoriAI("Dron se vraća na bazu.");
+}
+
+// Glasovni AI (sintetizator)
+function govoriAI(tekst) {
+  const glas = new SpeechSynthesisUtterance(tekst);
+  glas.lang = "bs-BA";
+  glas.pitch = 0.85;
+  glas.rate = 0.95;
+  glas.volume = 1;
+  speechSynthesis.speak(glas);
+}
+</script>
+</body>
+</html>
